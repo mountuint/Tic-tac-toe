@@ -11,10 +11,8 @@ function addMarkToBoard(player, position) {
   }
 }
 
-
 let firstPlayerScore = 0;
-let secondPlayerScore = 0
-
+let secondPlayerScore = 0;
 
 function checkTheBoard() {
   let lenghtOfRow = Gameboard.board.length / 3;
@@ -26,77 +24,89 @@ function checkTheBoard() {
     (firstRow[0] === "X" && firstRow[1] === "X" && firstRow[2] === "X") ||
     (firstRow[0] === "O" && firstRow[1] === "O" && firstRow[2] === "O")
   ) {
-    firstRow[0] === "X" ? firstPlayerScore += 1 : secondPlayerScore += 1;
-    console.log(`This is the first player score: ${firstPlayerScore}`)
-    console.log(`This is the second player score: ${secondPlayerScore}`)
+    firstRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
   } else if (
     (secondRow[0] === "X" && secondRow[1] === "X" && secondRow[2] === "X") ||
     (secondRow[0] === "O" && secondRow[1] === "O" && secondRow[2] === "O")
   ) {
-    secondRow[0] === "X" ? firstPlayerScore += 1 : secondPlayerScore += 1;
-    console.log(`This is the first player score: ${firstPlayerScore}`)
-    console.log(`This is the second player score: ${secondPlayerScore}`)
+    secondRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
   } else if (
     (thirdRow[0] === "X" && thirdRow[1] === "X" && thirdRow[2] === "X") ||
     (thirdRow[0] === "O" && thirdRow[1] === "O" && thirdRow[2] === "O")
   ) {
-    thirdRow[0] === "X" ? firstPlayerScore += 1 : secondPlayerScore += 1;
-    console.log(`This is the first player score: ${firstPlayerScore}`)
-    console.log(`This is the second player score: ${secondPlayerScore}`)
+    thirdRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
   } else if (
     (firstRow[0] === "X" && secondRow[1] === "X" && thirdRow[2] === "X") ||
     (firstRow[0] === "O" && secondRow[1] === "O" && thirdRow[2] === "O")
   ) {
-    firstRow[0] === "X" ? firstPlayerScore += 1 : secondPlayerScore += 1;
-    console.log(`This is the first player score: ${firstPlayerScore}`)
-    console.log(`This is the second player score: ${secondPlayerScore}`)
+    firstRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
   } else if (
     (firstRow[2] === "X" && secondRow[1] === "X" && thirdRow[0] === "X") ||
     (firstRow[2] === "O" && secondRow[1] === "O" && thirdRow[0] === "O")
   ) {
-    firstRow[2] === "X" ? firstPlayerScore += 1 : secondPlayerScore += 1;
-    console.log(`This is the first player score: ${firstPlayerScore}`)
-    console.log(`This is the second player score: ${secondPlayerScore}`)
+    firstRow[2] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
   } else if (
     (firstRow[1] === "X" && secondRow[1] === "X" && thirdRow[1] === "X") ||
     (firstRow[1] === "O" && secondRow[1] === "O" && thirdRow[1] === "O")
   ) {
-    firstRow[1] === "X" ? firstPlayerScore += 1 : secondPlayerScore += 1;
-    console.log(`This is the first player score: ${firstPlayerScore}`)
-    console.log(`This is the second player score: ${secondPlayerScore}`)
+    firstRow[1] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
   } else if (
     (firstRow[0] === "X" && secondRow[0] === "X" && thirdRow[0] === "X") ||
     (firstRow[0] === "O" && secondRow[0] === "O" && thirdRow[0] === "O")
   ) {
-    firstRow[0] === "X" ? firstPlayerScore += 1 : secondPlayerScore += 1;
-    console.log(`This is the first player score: ${firstPlayerScore}`)
-    console.log(`This is the second player score: ${secondPlayerScore}`)
+    firstRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
   } else if (
     (firstRow[2] === "X" && secondRow[2] === "X" && thirdRow[2] === "X") ||
     (firstRow[2] === "O" && secondRow[2] === "O" && thirdRow[2] === "O")
   ) {
-    firstRow[2] === "X" ? firstPlayerScore += 1 : secondPlayerScore += 1
-    console.log(`This is the first player score: ${firstPlayerScore}`)
-    console.log(`This is the second player score: ${secondPlayerScore}`)
+    firstRow[2] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
+  } else if (
+    Gameboard.board.filter((element) => element !== undefined).length === 9
+  ) {
+    console.log("It is a tie!!!");
+    console.log(`This is the first player score: ${firstPlayerScore}`);
+    console.log(`This is the second player score: ${secondPlayerScore}`);
+    return true;
   }
 }
 
+addMarkToBoard("X", 0)
+addMarkToBoard("X", 4)
+addMarkToBoard("X", 8)
+
 function playTheGame() {
-  let firstPlayer = "X";
-  let secondPlayer = "O";
+  let result = checkTheBoard();
 
-  addMarkToBoard("X", 0);
-  addMarkToBoard("O", 1);
-  addMarkToBoard("X", 2);
-  addMarkToBoard("X", 3);
-  addMarkToBoard("O", 4);
-  addMarkToBoard("X", 5);
-  addMarkToBoard("O", 6);
-  addMarkToBoard("X", 7);
-  addMarkToBoard("X", 8);
-
-  checkTheBoard();
+  if (result === true) {
+    return;
+  }
 }
+
+
 
 playTheGame();
 
