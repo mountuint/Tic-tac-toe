@@ -1,3 +1,6 @@
+const divContainer = document.querySelector("#div-container");
+const squares = document.querySelectorAll(".square");
+
 const Gameboard = {
   board: Array(9),
 };
@@ -94,9 +97,23 @@ function checkTheBoard() {
   }
 }
 
-addMarkToBoard("X", 0)
-addMarkToBoard("X", 4)
-addMarkToBoard("X", 8)
+addMarkToBoard("X", 0);
+addMarkToBoard("X", 1);
+addMarkToBoard("X", 2);
+addMarkToBoard("X", 3);
+addMarkToBoard("X", 4);
+addMarkToBoard("O", 7);
+addMarkToBoard("X", 8);
+
+const displayController = {
+  displayGameboard() {
+    for (let i = 0; i < 9; i++) {
+      squares[i].textContent = Gameboard.board[i];
+    }
+  },
+};
+
+displayController.displayGameboard()
 
 function playTheGame() {
   let result = checkTheBoard();
