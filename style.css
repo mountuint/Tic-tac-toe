@@ -6,7 +6,7 @@
 }
 
 #div-container div {
-  display: flex;
+    display: flex;
   background-color: peachpuff;
   border: 1px solid black;
   justify-content: center;
