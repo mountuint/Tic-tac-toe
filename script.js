@@ -1,15 +1,23 @@
 const divContainer = document.querySelector("#div-container");
 const squares = document.querySelectorAll(".square");
 
+let player = "X";
+let firstPlayerScore = 0;
+let secondPlayerScore = 0;
+
 const Gameboard = {
   board: Array(9),
 
-  addMarkToBoard(player, position) {
+  addMarkToBoard(position) {
     if (Gameboard.board[position] !== undefined) return;
     if (player === "O") {
       Gameboard.board[position] = "O";
+      player = "X";
+      console.log(`This is the ${player}`);
     } else if (player === "X") {
       Gameboard.board[position] = "X";
+      player = "O";
+      console.log(`This is the second ${player}`);
     }
   },
 
@@ -94,15 +102,16 @@ const Gameboard = {
   },
 };
 
-let firstPlayerScore = 0;
-let secondPlayerScore = 0;
-
 const displayController = {
   clickTheBoard() {
     squares.forEach((square, index) => {
       square.addEventListener("click", () => {
-        Gameboard.addMarkToBoard("X", index);
+        Gameboard.addMarkToBoard(index);
         this.displayGameboard();
+        let result = Gameboard.checkTheBoard();
+        if (result === true) {
+          return;
+        }
       });
     });
   },
@@ -110,18 +119,17 @@ const displayController = {
   displayGameboard() {
     for (let i = 0; i < 9; i++) {
       squares[i].textContent = Gameboard.board[i];
-      console.log(squares[i].textContent);
     }
   },
 };
 
 function playTheGame() {
   displayController.clickTheBoard();
-  let result = Gameboard.checkTheBoard();
+  // let result = Gameboard.checkTheBoard();
 
-  if (result === true) {
-    return;
-  }
+  // if (result === true) {
+  //   return;
+  // }
 }
 
 playTheGame();
