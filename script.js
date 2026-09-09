@@ -4,20 +4,22 @@ const squares = document.querySelectorAll(".square");
 let player = "X";
 let firstPlayerScore = 0;
 let secondPlayerScore = 0;
+let result = false
 
 const Gameboard = {
   board: Array(9),
 
   addMarkToBoard(position) {
+    if (result === true ) {
+      return;
+    }
     if (Gameboard.board[position] !== undefined) return;
     if (player === "O") {
       Gameboard.board[position] = "O";
       player = "X";
-      console.log(`This is the ${player}`);
     } else if (player === "X") {
       Gameboard.board[position] = "X";
       player = "O";
-      console.log(`This is the second ${player}`);
     }
   },
 
@@ -34,7 +36,7 @@ const Gameboard = {
       firstRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
+      result = true
     } else if (
       (secondRow[0] === "X" && secondRow[1] === "X" && secondRow[2] === "X") ||
       (secondRow[0] === "O" && secondRow[1] === "O" && secondRow[2] === "O")
@@ -42,7 +44,7 @@ const Gameboard = {
       secondRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
+      result = true
     } else if (
       (thirdRow[0] === "X" && thirdRow[1] === "X" && thirdRow[2] === "X") ||
       (thirdRow[0] === "O" && thirdRow[1] === "O" && thirdRow[2] === "O")
@@ -50,7 +52,7 @@ const Gameboard = {
       thirdRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
+      result = true
     } else if (
       (firstRow[0] === "X" && secondRow[1] === "X" && thirdRow[2] === "X") ||
       (firstRow[0] === "O" && secondRow[1] === "O" && thirdRow[2] === "O")
@@ -58,7 +60,7 @@ const Gameboard = {
       firstRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
+      result = true
     } else if (
       (firstRow[2] === "X" && secondRow[1] === "X" && thirdRow[0] === "X") ||
       (firstRow[2] === "O" && secondRow[1] === "O" && thirdRow[0] === "O")
@@ -66,7 +68,7 @@ const Gameboard = {
       firstRow[2] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
+      result = true
     } else if (
       (firstRow[1] === "X" && secondRow[1] === "X" && thirdRow[1] === "X") ||
       (firstRow[1] === "O" && secondRow[1] === "O" && thirdRow[1] === "O")
@@ -74,7 +76,7 @@ const Gameboard = {
       firstRow[1] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
+      result = true
     } else if (
       (firstRow[0] === "X" && secondRow[0] === "X" && thirdRow[0] === "X") ||
       (firstRow[0] === "O" && secondRow[0] === "O" && thirdRow[0] === "O")
@@ -82,7 +84,7 @@ const Gameboard = {
       firstRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
+      result = true
     } else if (
       (firstRow[2] === "X" && secondRow[2] === "X" && thirdRow[2] === "X") ||
       (firstRow[2] === "O" && secondRow[2] === "O" && thirdRow[2] === "O")
@@ -90,14 +92,13 @@ const Gameboard = {
       firstRow[2] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
+      result = true
     } else if (
       Gameboard.board.filter((element) => element !== undefined).length === 9
     ) {
       console.log("It is a tie!!!");
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
-      return true;
     }
   },
 };
@@ -108,10 +109,7 @@ const displayController = {
       square.addEventListener("click", () => {
         Gameboard.addMarkToBoard(index);
         this.displayGameboard();
-        let result = Gameboard.checkTheBoard();
-        if (result === true) {
-          return;
-        }
+        Gameboard.checkTheBoard();
       });
     });
   },
@@ -125,11 +123,6 @@ const displayController = {
 
 function playTheGame() {
   displayController.clickTheBoard();
-  // let result = Gameboard.checkTheBoard();
-
-  // if (result === true) {
-  //   return;
-  // }
 }
 
 playTheGame();
