@@ -1,4 +1,4 @@
-const divContainer = document.querySelector("#div-container");
+const squareContainer = document.querySelector("#square-container");
 const squares = document.querySelectorAll(".square");
 
 let player = "X";
@@ -11,6 +11,9 @@ const Gameboard = {
 
   addMarkToBoard(position) {
     if (result === true ) {
+      firstPlayerScore = 0
+      secondPlayerScore = 0
+      console.log(Gameboard.board)
       return;
     }
     if (Gameboard.board[position] !== undefined) return;
@@ -99,6 +102,7 @@ const Gameboard = {
       console.log("It is a tie!!!");
       console.log(`This is the first player score: ${firstPlayerScore}`);
       console.log(`This is the second player score: ${secondPlayerScore}`);
+      result = true
     }
   },
 };
@@ -126,5 +130,3 @@ function playTheGame() {
 }
 
 playTheGame();
-
-console.log(Gameboard.board);

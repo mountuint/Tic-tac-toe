@@ -1,23 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
-    <div id="div-container">
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+  </head>
+  <body>
+    <div id="player-container">
+      <div class="player">
+        <label for="first-player">First Player</label>
+        <input id="first-player" type="text" placeholder="Enter name" />
+      </div>
+
+      <div class="player">
+        <label for="second-player">Second Player</label>
+        <input id="second-player" type="text" placeholder="Enter name" />
+      </div>
+
+      <div id="game-buttons">
+        <button id="start-button">Start Game</button>
+        <button id="reset-button">Reset</button>
+      </div>
     </div>
-</body>
+
+    <div id="square-container">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+  </body>
 </html>
