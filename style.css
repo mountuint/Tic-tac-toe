@@ -84,3 +84,11 @@
   background-color: #ff6b6b;
   color: white;
 }
+
+#turn-indicator {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: relative;
+  top: 3rem;
+}
