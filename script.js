@@ -5,6 +5,9 @@ const firstPlayer = document.querySelector("#first-player");
 const secondPlayer = document.querySelector("#second-player");
 const turnIndicator = document.querySelector("#turn-indicator");
 const startButton = document.querySelector("#start-button");
+const resetButton = document.querySelector("#reset-button");
+
+
 
 let player = "X";
 let firstPlayerScore = 0;
@@ -26,7 +29,6 @@ const Gameboard = {
     if (result === true) {
       firstPlayerScore = 0;
       secondPlayerScore = 0;
-      console.log(Gameboard.board);
       return;
     }
     if (Gameboard.board[position] !== undefined) return;
@@ -77,10 +79,10 @@ const Gameboard = {
     ) {
       thirdRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       if (firstPlayerScore === 1) {
-        turnIndicator.textContent = `${firstPlayer.value} wins!`
+        turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
-        turnIndicator.textContent = `${secondPlayer.value} wins!`
-        secondPlayerScore = 0
+        turnIndicator.textContent = `${secondPlayer.value} wins!`;
+        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -89,10 +91,10 @@ const Gameboard = {
     ) {
       firstRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       if (firstPlayerScore === 1) {
-        turnIndicator.textContent = `${firstPlayer.value} wins!`
+        turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
-        turnIndicator.textContent = `${secondPlayer.value} wins!`
-        secondPlayerScore = 0
+        turnIndicator.textContent = `${secondPlayer.value} wins!`;
+        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -101,10 +103,10 @@ const Gameboard = {
     ) {
       firstRow[2] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       if (firstPlayerScore === 1) {
-        turnIndicator.textContent = `${firstPlayer.value} wins!`
+        turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
-        turnIndicator.textContent = `${secondPlayer.value} wins!`
-        secondPlayerScore = 0
+        turnIndicator.textContent = `${secondPlayer.value} wins!`;
+        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -113,10 +115,10 @@ const Gameboard = {
     ) {
       firstRow[1] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       if (firstPlayerScore === 1) {
-        turnIndicator.textContent = `${firstPlayer.value} wins!`
+        turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
-        turnIndicator.textContent = `${secondPlayer.value} wins!`
-        secondPlayerScore = 0
+        turnIndicator.textContent = `${secondPlayer.value} wins!`;
+        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -125,10 +127,10 @@ const Gameboard = {
     ) {
       firstRow[0] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       if (firstPlayerScore === 1) {
-        turnIndicator.textContent = `${firstPlayer.value} wins!`
+        turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
-        turnIndicator.textContent = `${secondPlayer.value} wins!`
-        secondPlayerScore = 0
+        turnIndicator.textContent = `${secondPlayer.value} wins!`;
+        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -137,16 +139,16 @@ const Gameboard = {
     ) {
       firstRow[2] === "X" ? (firstPlayerScore += 1) : (secondPlayerScore += 1);
       if (firstPlayerScore === 1) {
-        turnIndicator.textContent = `${firstPlayer.value} wins!`
+        turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
-        turnIndicator.textContent = `${secondPlayer.value} wins!`
-        secondPlayerScore = 0
+        turnIndicator.textContent = `${secondPlayer.value} wins!`;
+        secondPlayerScore = 0;
       }
       result = true;
     } else if (
       Gameboard.board.filter((element) => element !== undefined).length === 9
     ) {
-      turnIndicator.textContent = "It is a tie!!!"
+      turnIndicator.textContent = "It is a tie!!!";
       result = true;
     }
   },
@@ -176,3 +178,14 @@ const displayController = {
 };
 
 Gameboard.playTheGame();
+
+resetButton.addEventListener("click", () => {
+  firstPlayerScore = 0;
+  secondPlayerScore = 0;
+  firstPlayer.value = "";
+  secondPlayer.value = "";
+  turnIndicator.textContent = "";
+  Gameboard.board = Array(9)
+  displayController.displayGameboard()
+  console.log(Gameboard.board)
+});
