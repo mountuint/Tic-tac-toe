@@ -17,6 +17,7 @@ const Gameboard = {
 
   startTheGame() {
     startButton.addEventListener("click", () => {
+      displayController.clickTheBoard();
       if (firstPlayer.value !== "" && secondPlayer.value !== "") {
         turnIndicator.textContent = `${firstPlayer.value}'s turn!`;
       }
@@ -25,14 +26,16 @@ const Gameboard = {
 
   resetTheGame() {
     resetButton.addEventListener("click", () => {
-      firstPlayerScore = 0;
-      secondPlayerScore = 0;
+      console.log(firstPlayerScore)
+      console.log(secondPlayerScore)
+      console.log(Gameboard.board)
       firstPlayer.value = "";
       secondPlayer.value = "";
       turnIndicator.textContent = "";
       Gameboard.board = Array(9);
-      displayController.displayGameboard();
-      console.log(Gameboard.board);
+      for (let i = 0; i < 9; i++) {
+        squares[i].textContent = Gameboard.board[i];
+      }
     });
   },
 
@@ -69,7 +72,6 @@ const Gameboard = {
         turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
         turnIndicator.textContent = `${secondPlayer.value} wins!`;
-        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -81,7 +83,6 @@ const Gameboard = {
         turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
         turnIndicator.textContent = `${secondPlayer.value} wins!`;
-        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -93,7 +94,6 @@ const Gameboard = {
         turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
         turnIndicator.textContent = `${secondPlayer.value} wins!`;
-        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -105,7 +105,6 @@ const Gameboard = {
         turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
         turnIndicator.textContent = `${secondPlayer.value} wins!`;
-        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -117,7 +116,6 @@ const Gameboard = {
         turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
         turnIndicator.textContent = `${secondPlayer.value} wins!`;
-        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -129,7 +127,6 @@ const Gameboard = {
         turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
         turnIndicator.textContent = `${secondPlayer.value} wins!`;
-        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -141,7 +138,6 @@ const Gameboard = {
         turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
         turnIndicator.textContent = `${secondPlayer.value} wins!`;
-        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -153,7 +149,6 @@ const Gameboard = {
         turnIndicator.textContent = `${firstPlayer.value} wins!`;
       } else {
         turnIndicator.textContent = `${secondPlayer.value} wins!`;
-        secondPlayerScore = 0;
       }
       result = true;
     } else if (
@@ -165,9 +160,8 @@ const Gameboard = {
   },
 
   playTheGame() {
-    this.resetTheGame()
+    this.resetTheGame();
     this.startTheGame();
-    displayController.clickTheBoard();
   },
 };
 
