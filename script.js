@@ -7,8 +7,6 @@ const turnIndicator = document.querySelector("#turn-indicator");
 const startButton = document.querySelector("#start-button");
 const resetButton = document.querySelector("#reset-button");
 
-
-
 let player = "X";
 let firstPlayerScore = 0;
 let secondPlayerScore = 0;
@@ -22,6 +20,19 @@ const Gameboard = {
       if (firstPlayer.value !== "" && secondPlayer.value !== "") {
         turnIndicator.textContent = `${firstPlayer.value}'s turn!`;
       }
+    });
+  },
+
+  resetTheGame() {
+    resetButton.addEventListener("click", () => {
+      firstPlayerScore = 0;
+      secondPlayerScore = 0;
+      firstPlayer.value = "";
+      secondPlayer.value = "";
+      turnIndicator.textContent = "";
+      Gameboard.board = Array(9);
+      displayController.displayGameboard();
+      console.log(Gameboard.board);
     });
   },
 
@@ -154,6 +165,7 @@ const Gameboard = {
   },
 
   playTheGame() {
+    this.resetTheGame()
     this.startTheGame();
     displayController.clickTheBoard();
   },
@@ -178,14 +190,3 @@ const displayController = {
 };
 
 Gameboard.playTheGame();
-
-resetButton.addEventListener("click", () => {
-  firstPlayerScore = 0;
-  secondPlayerScore = 0;
-  firstPlayer.value = "";
-  secondPlayer.value = "";
-  turnIndicator.textContent = "";
-  Gameboard.board = Array(9)
-  displayController.displayGameboard()
-  console.log(Gameboard.board)
-});
