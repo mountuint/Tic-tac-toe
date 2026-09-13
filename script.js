@@ -15,20 +15,8 @@ let result = false;
 const Gameboard = {
   board: Array(9),
 
-  startTheGame() {
-    startButton.addEventListener("click", () => {
-      displayController.clickTheBoard();
-      if (firstPlayer.value !== "" && secondPlayer.value !== "") {
-        turnIndicator.textContent = `${firstPlayer.value}'s turn!`;
-      }
-    });
-  },
-
   resetTheGame() {
     resetButton.addEventListener("click", () => {
-      console.log(firstPlayerScore)
-      console.log(secondPlayerScore)
-      console.log(Gameboard.board)
       firstPlayer.value = "";
       secondPlayer.value = "";
       turnIndicator.textContent = "";
@@ -39,11 +27,19 @@ const Gameboard = {
     });
   },
 
+  startTheGame() {
+    startButton.addEventListener("click", () => {
+      displayController.clickTheBoard();
+      if (firstPlayer.value !== "" && secondPlayer.value !== "") {
+        turnIndicator.textContent = `${firstPlayer.value}'s turn!`;
+      }
+    });
+  },
+
   addMarkToBoard(position) {
     if (result === true) {
       firstPlayerScore = 0;
       secondPlayerScore = 0;
-      return;
     }
     if (Gameboard.board[position] !== undefined) return;
     if (player === "O") {
