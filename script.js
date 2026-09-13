@@ -21,6 +21,7 @@ const Gameboard = {
       secondPlayer.value = "";
       turnIndicator.textContent = "";
       Gameboard.board = Array(9);
+      result = false
       for (let i = 0; i < 9; i++) {
         squares[i].textContent = Gameboard.board[i];
       }
@@ -40,6 +41,7 @@ const Gameboard = {
     if (result === true) {
       firstPlayerScore = 0;
       secondPlayerScore = 0;
+      return;
     }
     if (Gameboard.board[position] !== undefined) return;
     if (player === "O") {
