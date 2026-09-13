@@ -11,18 +11,22 @@ let player = "X";
 let firstPlayerScore = 0;
 let secondPlayerScore = 0;
 let result = false;
+let gameStarted = false;
 
 const Gameboard = {
   board: Array(9),
 
   resetTheGame() {
     resetButton.addEventListener("click", () => {
+      player = "X"
       firstPlayer.value = "";
       secondPlayer.value = "";
       turnIndicator.textContent = "";
       Gameboard.board = Array(9);
       result = false;
+      gameStarted = false;
       startButton.disabled = false;
+
       for (let i = 0; i < 9; i++) {
         squares[i].textContent = Gameboard.board[i];
       }
@@ -31,11 +35,12 @@ const Gameboard = {
 
   startTheGame() {
     startButton.addEventListener("click", () => {
-      displayController.clickTheBoard();
       if (firstPlayer.value !== "" && secondPlayer.value !== "") {
+        gameStarted = true;
+        displayController.clickTheBoard();
         turnIndicator.textContent = `${firstPlayer.value}'s turn!`;
+        startButton.disabled = true;
       }
-      startButton.disabled = true;
     });
   },
 
@@ -169,6 +174,8 @@ const displayController = {
   clickTheBoard() {
     squares.forEach((square, index) => {
       square.addEventListener("click", () => {
+        if (!gameStarted) return;
+
         Gameboard.addMarkToBoard(index);
         this.displayGameboard();
         Gameboard.checkTheBoard();
